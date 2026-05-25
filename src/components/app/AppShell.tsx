@@ -52,7 +52,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="grid h-7 w-7 place-items-center rounded-md bg-foreground text-background">
             <Sparkles className="h-3.5 w-3.5" />
           </div>
-          <span className="text-sm font-semibold tracking-tight">Lumen AI</span>
+          <span className="text-sm font-semibold tracking-tight">Dewa ai</span>
         </Link>
         <div className="px-3 pt-4">
           <div className="relative">

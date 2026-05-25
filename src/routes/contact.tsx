@@ -12,7 +12,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
-  head: () => ({ meta: [{ title: "Contact · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Contact · Dewa ai" }] }),
 });
 
 function Contact() {
@@ -35,7 +35,7 @@ function Contact() {
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-[1fr_1.5fr]">
           <div className="space-y-4">
             {[
-              { icon: Mail, title: "Email", desc: "hello@lumen.ai" },
+              { icon: Mail, title: "Email", desc: "hello@dewa.ai" },
               { icon: MessageCircle, title: "Support", desc: "Reach the team within 4h" },
               { icon: Building2, title: "HQ", desc: "Lisbon · Stockholm · Remote" },
             ].map((c) => (

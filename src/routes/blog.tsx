@@ -5,13 +5,13 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/blog")({
   component: Blog,
-  head: () => ({ meta: [{ title: "Blog · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Blog · Dewa ai" }] }),
 });
 
 const POSTS = [
   {
     cat: "Product",
-    title: "Introducing realtime workflows in Lumen 3.0",
+    title: "Introducing realtime workflows in dewa 3.0",
     desc: "Build, trigger and observe AI automations the moment your data changes.",
     date: "May 24, 2026",
     author: "Sara Lindgren",
@@ -32,7 +32,7 @@ const POSTS = [
   },
   {
     cat: "Customers",
-    title: "Northwind ships 30% more content with Lumen",
+    title: "Northwind ships 30% more content with dewa",
     desc: "A look inside one of the fastest-moving content teams in Europe.",
     date: "Apr 14, 2026",
     author: "Marcus Tan",
@@ -54,7 +54,7 @@ function Blog() {
         <div className="mx-auto max-w-3xl px-6 text-center">
           <Badge variant="outline" className="rounded-full">Blog</Badge>
           <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight">
-            Notes from the Lumen team.
+            Notes from the dewa team.
           </h1>
           <p className="mt-4 text-muted-foreground">
             Product, engineering, design, and customer stories.

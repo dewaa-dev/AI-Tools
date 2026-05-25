@@ -29,11 +29,11 @@ export const Route = createFileRoute("/")({
   component: Landing,
   head: () => ({
     meta: [
-      { title: "Lumen AI — The modern AI workspace for productivity" },
+      { title: "Dewa ai — The modern AI workspace for productivity" },
       {
         name: "description",
         content:
-          "Lumen AI brings chat, writing, code, document, and automation tools into one premium workspace — built for teams that ship.",
+          "Dewa ai brings chat, writing, code, document, and automation tools into one premium workspace — built for teams that ship.",
       },
     ],
   }),
@@ -82,7 +82,7 @@ const stats = [
 const testimonials = [
   {
     quote:
-      "Lumen replaced four tools for our content team. The workspace feels native — not like another wrapper.",
+      "dewa replaced four tools for our content team. The workspace feels native — not like another wrapper.",
     name: "Sara Lindgren",
     role: "Head of Content, Northwind",
   },
@@ -105,7 +105,7 @@ const plans = [
     name: "Free",
     price: "$0",
     period: "/ month",
-    desc: "Everything you need to try Lumen AI.",
+    desc: "Everything you need to try Dewa ai.",
     features: ["100 AI credits / month", "All core AI tools", "1 workspace", "Community support"],
     cta: "Start free",
     highlight: false,
@@ -137,8 +137,8 @@ const plans = [
 
 const faqs = [
   {
-    q: "Which AI models does Lumen support?",
-    a: "Lumen routes intelligently across GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and open-source Llama models. You can pin a specific model per workspace.",
+    q: "Which AI models does dewa support?",
+    a: "dewa routes intelligently across GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and open-source Llama models. You can pin a specific model per workspace.",
   },
   {
     q: "Is my data used to train models?",
@@ -165,7 +165,7 @@ function Landing() {
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="outline" className="mb-6 rounded-full border-border/80 bg-background/60 px-3 py-1 text-xs font-medium backdrop-blur">
               <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              New · Lumen 3.0 with realtime workflows
+              New · dewa 3.0 with realtime workflows
             </Badge>
             <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
               The AI workspace built for{" "}
@@ -200,7 +200,7 @@ function Landing() {
                   <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/20" />
                   <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/20" />
                   <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/20" />
-                  <div className="ml-auto text-[11px] text-muted-foreground">lumen.ai/workspace</div>
+                  <div className="ml-auto text-[11px] text-muted-foreground">dewa.ai/workspace</div>
                 </div>
                 <div className="grid grid-cols-[180px_1fr] gap-0">
                   <div className="border-r border-border/60 p-4">
@@ -235,7 +235,7 @@ function Landing() {
                         Realtime workflows are here.
                       </div>
                       <div className="mt-2">
-                        Today we're shipping the biggest update to Lumen yet. Build and trigger AI
+                        Today we're shipping the biggest update to dewa yet. Build and trigger AI
                         automations the moment your data changes — no glue code, no waiting.
                         <span className="ml-0.5 inline-block h-3 w-1.5 translate-y-0.5 animate-pulse bg-foreground" />
                       </div>
@@ -278,7 +278,7 @@ function Landing() {
               One workspace. Every AI tool you need.
             </h2>
             <p className="mt-4 text-balance text-muted-foreground">
-              Stop juggling tabs. Lumen ships the AI capabilities of a dozen tools — connected,
+              Stop juggling tabs. dewa ships the AI capabilities of a dozen tools — connected,
               consistent, and surprisingly fast.
             </p>
           </div>
@@ -312,7 +312,7 @@ function Landing() {
                 Built for the way modern teams ship.
               </h2>
               <p className="mt-4 text-balance leading-relaxed text-muted-foreground">
-                Lumen blends a real-time AI workspace, team collaboration, and granular usage
+                dewa blends a real-time AI workspace, team collaboration, and granular usage
                 analytics — so leaders see the impact and ICs feel the speed.
               </p>
               <ul className="mt-7 space-y-3">
@@ -364,7 +364,7 @@ function Landing() {
           <div className="mx-auto max-w-2xl text-center">
             <Badge variant="outline" className="rounded-full">Loved by teams</Badge>
             <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-              Teams that care about craft choose Lumen.
+              Teams that care about craft choose dewa.
             </h2>
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-3">

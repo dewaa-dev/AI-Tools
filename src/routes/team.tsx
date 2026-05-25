@@ -7,7 +7,7 @@ import { AppShell } from "@/components/app/AppShell";
 
 export const Route = createFileRoute("/team")({
   component: Team,
-  head: () => ({ meta: [{ title: "Team workspace · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Team workspace · Dewa ai" }] }),
 });
 
 const members = [

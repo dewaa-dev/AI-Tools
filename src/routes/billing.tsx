@@ -6,7 +6,7 @@ import { AppShell } from "@/components/app/AppShell";
 
 export const Route = createFileRoute("/billing")({
   component: Billing,
-  head: () => ({ meta: [{ title: "Billing · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Billing · Dewa ai" }] }),
 });
 
 const invoices = [

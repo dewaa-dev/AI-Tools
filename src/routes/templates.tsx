@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export const Route = createFileRoute("/templates")({
   component: Templates,
-  head: () => ({ meta: [{ title: "Templates · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Templates · Dewa ai" }] }),
 });
 
 const CATS = ["All", "Writing", "Code", "Marketing", "Research", "Automation", "Image"];

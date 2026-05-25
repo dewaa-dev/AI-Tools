@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/changelog")({
   component: Changelog,
-  head: () => ({ meta: [{ title: "Changelog · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Changelog · Dewa ai" }] }),
 });
 
 const ENTRIES = [
@@ -59,7 +59,7 @@ function Changelog() {
         <div className="mx-auto max-w-3xl px-6 text-center">
           <Badge variant="outline" className="rounded-full">Changelog</Badge>
           <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight">
-            What's new in Lumen.
+            What's new in dewa.
           </h1>
           <p className="mt-4 text-muted-foreground">
             We ship every week. Here's the latest.

@@ -29,7 +29,7 @@ export function Navbar() {
           <div className="grid h-8 w-8 place-items-center rounded-lg bg-foreground text-background">
             <Sparkles className="h-4 w-4" />
           </div>
-          <span className="text-[15px] font-semibold tracking-tight">Lumen AI</span>
+          <span className="text-[15px] font-semibold tracking-tight">Dewa ai</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((n) => (

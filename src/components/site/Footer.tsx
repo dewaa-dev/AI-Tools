@@ -41,7 +41,7 @@ export function Footer() {
               <div className="grid h-8 w-8 place-items-center rounded-lg bg-foreground text-background">
                 <Sparkles className="h-4 w-4" />
               </div>
-              <span className="text-[15px] font-semibold tracking-tight">Lumen AI</span>
+              <span className="text-[15px] font-semibold tracking-tight">Dewa ai</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               The modern AI workspace for content, code, automation, and team productivity — built
@@ -79,7 +79,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <div>© {new Date().getFullYear()} Lumen AI, Inc. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Dewa ai, Inc. All rights reserved.</div>
           <div className="flex gap-4">
             <a href="#" className="hover:text-foreground">Privacy</a>
             <a href="#" className="hover:text-foreground">Terms</a>

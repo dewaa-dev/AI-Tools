@@ -24,7 +24,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
-  head: () => ({ meta: [{ title: "Dashboard · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Dashboard · Dewa ai" }] }),
 });
 
 const tokenData = Array.from({ length: 14 }).map((_, i) => ({

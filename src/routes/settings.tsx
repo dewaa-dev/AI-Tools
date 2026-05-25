@@ -8,7 +8,7 @@ import { AppShell } from "@/components/app/AppShell";
 
 export const Route = createFileRoute("/settings")({
   component: Settings,
-  head: () => ({ meta: [{ title: "Settings · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Settings · Dewa ai" }] }),
 });
 
 function Section({
@@ -40,7 +40,7 @@ function Settings() {
           <h1 className="mt-1 text-3xl font-semibold tracking-tight">Workspace settings</h1>
         </div>
 
-        <Section title="Profile" desc="How your name and avatar appear across Lumen.">
+        <Section title="Profile" desc="How your name and avatar appear across dewa.">
           <div>
             <Label className="text-xs">Full name</Label>
             <Input defaultValue="Sara Lindgren" className="mt-1.5" />

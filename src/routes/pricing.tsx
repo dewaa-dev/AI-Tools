@@ -6,14 +6,14 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/pricing")({
   component: Pricing,
-  head: () => ({ meta: [{ title: "Pricing · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "Pricing · Dewa ai" }] }),
 });
 
 const plans = [
   {
     name: "Free",
     price: "$0",
-    desc: "Try Lumen with no commitment.",
+    desc: "Try dewa with no commitment.",
     features: ["100 AI credits / mo", "All core tools", "1 workspace", "Community support"],
     cta: "Start free",
   },

@@ -19,7 +19,7 @@ import { AppShell } from "@/components/app/AppShell";
 
 export const Route = createFileRoute("/workspace")({
   component: Workspace,
-  head: () => ({ meta: [{ title: "AI Workspace · Lumen AI" }] }),
+  head: () => ({ meta: [{ title: "AI Workspace · Dewa ai" }] }),
 });
 
 type Msg = { id: string; role: "user" | "assistant"; content: string };
@@ -57,7 +57,7 @@ function Workspace() {
     setInput("");
     setStreaming(true);
 
-    const reply = `Here's a draft based on your request:\n\n"${text}"\n\nLumen breaks this into clear steps, keeps a calm tone, and stays under 120 words. You can refine, save it as a template, or push it into an automation — all without leaving the workspace.`;
+    const reply = `Here's a draft based on your request:\n\n"${text}"\n\ndewa breaks this into clear steps, keeps a calm tone, and stays under 120 words. You can refine, save it as a template, or push it into an automation — all without leaving the workspace.`;
     let i = 0;
     const tick = () => {
       i += 3;
@@ -116,7 +116,7 @@ function Workspace() {
                   How can I help you today?
                 </h1>
                 <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                  Start a conversation, draft content, generate code, or summarize a file. Lumen
+                  Start a conversation, draft content, generate code, or summarize a file. dewa
                   remembers your context across the workspace.
                 </p>
                 <div className="mt-8 grid w-full max-w-xl gap-2 sm:grid-cols-2">
@@ -149,7 +149,7 @@ function Workspace() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-medium text-muted-foreground">
-                        {m.role === "user" ? "You" : "Lumen"}
+                        {m.role === "user" ? "You" : "dewa"}
                       </div>
                       <div className="mt-1 whitespace-pre-wrap text-[15px] leading-relaxed text-foreground">
                         {m.content}
@@ -184,7 +184,7 @@ function Workspace() {
                       send(input);
                     }
                   }}
-                  placeholder="Message Lumen…"
+                  placeholder="Message dewa…"
                   className="min-h-[60px] resize-none border-0 bg-transparent p-4 pr-14 text-[15px] shadow-none focus-visible:ring-0"
                 />
                 <div className="flex items-center justify-between border-t border-border/60 px-3 py-2">
@@ -208,7 +208,7 @@ function Workspace() {
                 </div>
               </div>
               <div className="mt-2 text-center text-[11px] text-muted-foreground">
-                Lumen can make mistakes. Verify important info.
+                dewa can make mistakes. Verify important info.
               </div>
             </form>
           </div>
