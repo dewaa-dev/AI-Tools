@@ -72,14 +72,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Dewa AI · One workspace for practical AI tools" },
+      {
+        name: "description",
+        content:
+          "Write, review code, analyze files, and organize AI-assisted work in one focused workspace.",
+      },
+      { name: "author", content: "Dewa AI" },
+      { property: "og:title", content: "Dewa AI" },
+      {
+        property: "og:description",
+        content: "One focused workspace for practical AI-assisted work.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

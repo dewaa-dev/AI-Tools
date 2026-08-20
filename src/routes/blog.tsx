@@ -50,10 +50,12 @@ function Blog() {
   const [first, ...rest] = POSTS;
   return (
     <SiteLayout>
-      <section className="border-b border-border/60 py-16">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <Badge variant="outline" className="rounded-full">Blog</Badge>
-          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight">
+      <section className="border-b border-border/60 py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl px-5 text-center sm:px-6">
+          <Badge variant="outline" className="rounded-full">
+            Blog
+          </Badge>
+          <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
             Notes from the dewa team.
           </h1>
           <p className="mt-4 text-muted-foreground">
@@ -69,8 +71,12 @@ function Blog() {
           >
             <div className="aspect-[5/3] rounded-xl bg-gradient-to-br from-muted to-muted/50" />
             <div>
-              <Badge variant="secondary" className="rounded-full">{first.cat}</Badge>
-              <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight">{first.title}</h2>
+              <Badge variant="secondary" className="rounded-full">
+                {first.cat}
+              </Badge>
+              <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight">
+                {first.title}
+              </h2>
               <p className="mt-3 text-muted-foreground">{first.desc}</p>
               <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground">
                 <div className="h-6 w-6 rounded-full bg-gradient-to-br from-foreground to-foreground/60" />
@@ -88,8 +94,12 @@ function Blog() {
                 key={p.title}
                 className="group rounded-2xl border border-border bg-background p-7 transition-colors hover:bg-muted/40"
               >
-                <Badge variant="secondary" className="rounded-full">{p.cat}</Badge>
-                <h3 className="mt-3 text-balance text-xl font-semibold tracking-tight">{p.title}</h3>
+                <Badge variant="secondary" className="rounded-full">
+                  {p.cat}
+                </Badge>
+                <h3 className="mt-3 text-balance text-xl font-semibold tracking-tight">
+                  {p.title}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                 <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground">
                   <div className="h-6 w-6 rounded-full bg-gradient-to-br from-foreground to-foreground/60" />

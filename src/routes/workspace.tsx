@@ -16,8 +16,19 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { AppShell } from "@/components/app/AppShell";
+import type { WorkspaceTool } from "@/components/app/AppShell";
+
+const WORKSPACE_TOOLS: WorkspaceTool[] = ["writing", "code", "files", "image", "automation"];
+
+type WorkspaceSearch = { tool?: WorkspaceTool };
 
 export const Route = createFileRoute("/workspace")({
+  validateSearch: (search: Record<string, unknown>): WorkspaceSearch => ({
+    tool:
+      typeof search.tool === "string" && WORKSPACE_TOOLS.includes(search.tool as WorkspaceTool)
+        ? (search.tool as WorkspaceTool)
+        : undefined,
+  }),
   component: Workspace,
   head: () => ({ meta: [{ title: "AI Workspace · Dewa ai" }] }),
 });
@@ -39,11 +50,39 @@ const HISTORY = [
   "Onboarding checklist v3",
 ];
 
+const TOOL_CONTEXT: Record<WorkspaceTool, { title: string; description: string }> = {
+  writing: {
+    title: "Writing assistant",
+    description: "Draft, refine, and adapt content for your audience.",
+  },
+  code: {
+    title: "Code assistant",
+    description: "Explain, review, and improve code with focused guidance.",
+  },
+  files: {
+    title: "File analysis",
+    description: "Work with documents and extract the details that matter.",
+  },
+  image: {
+    title: "Image workspace",
+    description: "Develop clear visual directions and production-ready prompts.",
+  },
+  automation: {
+    title: "Automation builder",
+    description: "Turn repeatable work into clear, dependable workflows.",
+  },
+};
+
 function Workspace() {
+  const { tool } = Route.useSearch();
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
+  const [attachment, setAttachment] = useState<string>();
+  const [showSaved, setShowSaved] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const imageInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -51,10 +90,12 @@ function Workspace() {
 
   function send(text: string) {
     if (!text.trim() || streaming) return;
-    const userMsg: Msg = { id: crypto.randomUUID(), role: "user", content: text };
+    const userContent = attachment ? `${text}\n\nAttached in demo: ${attachment}` : text;
+    const userMsg: Msg = { id: crypto.randomUUID(), role: "user", content: userContent };
     const aiId = crypto.randomUUID();
     setMessages((m) => [...m, userMsg, { id: aiId, role: "assistant", content: "" }]);
     setInput("");
+    setAttachment(undefined);
     setStreaming(true);
 
     const reply = `Here's a draft based on your request:\n\n"${text}"\n\ndewa breaks this into clear steps, keeps a calm tone, and stays under 120 words. You can refine, save it as a template, or push it into an automation — all without leaving the workspace.`;
@@ -72,35 +113,74 @@ function Workspace() {
 
   return (
     <AppShell>
-      <div className="grid h-[calc(100vh-3.5rem)] grid-cols-1 lg:grid-cols-[280px_1fr]">
+      <div className="grid min-h-[calc(100svh-3.5rem)] grid-cols-1 lg:h-[calc(100svh-3.5rem)] lg:grid-cols-[280px_1fr]">
         {/* History panel */}
         <aside className="hidden border-r border-border/60 bg-background lg:flex lg:flex-col">
           <div className="flex items-center justify-between p-4">
             <div className="text-sm font-semibold">Conversations</div>
-            <Button size="icon" variant="ghost" className="h-7 w-7">
+            <Button
+              size="icon"
+              variant="ghost"
+              className="h-8 w-8"
+              onClick={() => {
+                setMessages([]);
+                setInput("");
+                setAttachment(undefined);
+              }}
+              aria-label="Start a new conversation"
+              title="Start a new demo conversation"
+            >
               <Plus className="h-4 w-4" />
             </Button>
           </div>
           <div className="px-2">
-            <Badge variant="secondary" className="ml-2 rounded-full text-[10px]">Today</Badge>
+            <Badge variant="secondary" className="ml-2 rounded-full text-[10px]">
+              Today
+            </Badge>
           </div>
           <ul className="mt-2 flex-1 space-y-0.5 overflow-y-auto px-2 pb-4">
             {HISTORY.map((h, i) => (
-              <li
-                key={h}
-                className={`group flex cursor-pointer items-start gap-2 rounded-md p-2 text-sm hover:bg-muted ${
-                  i === 0 ? "bg-muted" : ""
-                }`}
-              >
-                <MessageSquare className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
-                <span className="line-clamp-2 leading-snug">{h}</span>
+              <li key={h}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setMessages([
+                      { id: crypto.randomUUID(), role: "user", content: h },
+                      {
+                        id: crypto.randomUUID(),
+                        role: "assistant",
+                        content: `This is a restored portfolio-demo conversation for “${h}”. Continue below to explore the interaction.`,
+                      },
+                    ])
+                  }
+                  className={`flex min-h-10 w-full items-start gap-2 rounded-md p-2 text-left text-sm hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${i === 0 ? "bg-muted" : ""}`}
+                >
+                  <MessageSquare
+                    aria-hidden="true"
+                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground"
+                  />
+                  <span className="line-clamp-2 leading-snug">{h}</span>
+                </button>
               </li>
             ))}
           </ul>
           <div className="border-t border-border/60 p-3">
-            <button className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-xs text-muted-foreground hover:bg-muted">
-              <Bookmark className="h-3.5 w-3.5" /> Saved prompts
+            <button
+              type="button"
+              onClick={() => setShowSaved((current) => !current)}
+              aria-pressed={showSaved}
+              className="flex min-h-10 w-full items-center gap-2 rounded-md px-2 py-2 text-xs text-muted-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Bookmark className="h-3.5 w-3.5" />{" "}
+              {showSaved ? "Hide saved prompts" : "Saved prompts"}
             </button>
+            {showSaved && (
+              <ul className="mt-2 space-y-1 border-t border-border pt-2 text-xs text-muted-foreground">
+                <li className="rounded-md px-2 py-1.5">Rewrite in our calm brand voice</li>
+                <li className="rounded-md px-2 py-1.5">Review code for edge cases</li>
+                <li className="rounded-md px-2 py-1.5">Summarize a document in five bullets</li>
+              </ul>
+            )}
           </div>
         </aside>
 
@@ -112,12 +192,13 @@ function Workspace() {
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-foreground text-background">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h1 className="mt-6 text-3xl font-semibold tracking-tight">
-                  How can I help you today?
+                <h1 className="mt-6 text-2xl font-semibold tracking-tight sm:text-3xl">
+                  {tool ? TOOL_CONTEXT[tool].title : "How can I help you today?"}
                 </h1>
                 <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                  Start a conversation, draft content, generate code, or summarize a file. dewa
-                  remembers your context across the workspace.
+                  {tool
+                    ? TOOL_CONTEXT[tool].description
+                    : "Start a conversation, draft content, generate code, or summarize a file."}
                 </p>
                 <div className="mt-8 grid w-full max-w-xl gap-2 sm:grid-cols-2">
                   {STARTER_PROMPTS.map((p) => (
@@ -135,7 +216,7 @@ function Workspace() {
                 </div>
               </div>
             ) : (
-              <div className="mx-auto max-w-3xl space-y-6 px-6 py-8">
+              <div className="mx-auto max-w-3xl space-y-6 px-4 py-8 sm:px-6" aria-live="polite">
                 {messages.map((m) => (
                   <div key={m.id} className="flex gap-3">
                     <div
@@ -166,7 +247,7 @@ function Workspace() {
           </div>
 
           {/* Composer */}
-          <div className="border-t border-border/60 bg-background/80 p-4 backdrop-blur">
+          <div className="border-t border-border/60 bg-background/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:p-4">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -187,15 +268,54 @@ function Workspace() {
                   placeholder="Message dewa…"
                   className="min-h-[60px] resize-none border-0 bg-transparent p-4 pr-14 text-[15px] shadow-none focus-visible:ring-0"
                 />
+                {attachment && (
+                  <div
+                    className="mx-3 mb-2 inline-flex rounded-md bg-muted px-2 py-1 text-xs"
+                    role="status"
+                  >
+                    Attached: {attachment}
+                  </div>
+                )}
                 <div className="flex items-center justify-between border-t border-border/60 px-3 py-2">
                   <div className="flex items-center gap-1">
-                    <Button type="button" size="icon" variant="ghost" className="h-7 w-7 text-muted-foreground">
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="ghost"
+                      className="h-9 w-9 text-muted-foreground"
+                      onClick={() => fileInputRef.current?.click()}
+                      aria-label="Attach a file"
+                      title="Attach a demo file"
+                    >
                       <Paperclip className="h-3.5 w-3.5" />
                     </Button>
-                    <Button type="button" size="icon" variant="ghost" className="h-7 w-7 text-muted-foreground">
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="ghost"
+                      className="h-9 w-9 text-muted-foreground"
+                      onClick={() => imageInputRef.current?.click()}
+                      aria-label="Add an image"
+                      title="Attach a demo image"
+                    >
                       <ImageIcon className="h-3.5 w-3.5" />
                     </Button>
-                    <Badge variant="secondary" className="ml-2 rounded-full text-[10px]">GPT-4o</Badge>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      className="sr-only"
+                      onChange={(event) => setAttachment(event.target.files?.[0]?.name)}
+                    />
+                    <input
+                      ref={imageInputRef}
+                      type="file"
+                      accept="image/*"
+                      className="sr-only"
+                      onChange={(event) => setAttachment(event.target.files?.[0]?.name)}
+                    />
+                    <Badge variant="secondary" className="ml-2 rounded-full text-[10px]">
+                      Demo model
+                    </Badge>
                   </div>
                   <Button
                     type="submit"

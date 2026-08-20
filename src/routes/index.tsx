@@ -117,7 +117,7 @@ const plans = [
     desc: "For professionals shipping every day.",
     features: [
       "Unlimited AI credits",
-      "Advanced models (GPT-4o, Claude 3.5)",
+      "Advanced model workflows (demo)",
       "Prompt history & templates",
       "Priority support",
     ],
@@ -138,7 +138,7 @@ const plans = [
 const faqs = [
   {
     q: "Which AI models does dewa support?",
-    a: "dewa routes intelligently across GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, and open-source Llama models. You can pin a specific model per workspace.",
+    a: "This portfolio build simulates model responses locally. A production version can connect the same workspace UI to a configured provider without exposing credentials to the browser.",
   },
   {
     q: "Is my data used to train models?",
@@ -163,11 +163,14 @@ function Landing() {
         <div className="bg-grid pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
         <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-20 md:pt-32">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="outline" className="mb-6 rounded-full border-border/80 bg-background/60 px-3 py-1 text-xs font-medium backdrop-blur">
+            <Badge
+              variant="outline"
+              className="mb-6 rounded-full border-border/80 bg-background/60 px-3 py-1 text-xs font-medium backdrop-blur"
+            >
               <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
               New · dewa 3.0 with realtime workflows
             </Badge>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight md:text-7xl">
+            <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-7xl">
               The AI workspace built for{" "}
               <span className="bg-gradient-to-br from-foreground via-foreground to-foreground/40 bg-clip-text text-transparent">
                 serious work.
@@ -208,16 +211,19 @@ function Landing() {
                       Recent
                     </div>
                     <ul className="mt-3 space-y-1.5">
-                      {["Launch email draft", "Q3 product review", "API refactor", "Brand voice v2"].map(
-                        (i) => (
-                          <li
-                            key={i}
-                            className="truncate rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-muted"
-                          >
-                            {i}
-                          </li>
-                        ),
-                      )}
+                      {[
+                        "Launch email draft",
+                        "Q3 product review",
+                        "API refactor",
+                        "Brand voice v2",
+                      ].map((i) => (
+                        <li
+                          key={i}
+                          className="truncate rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-muted"
+                        >
+                          {i}
+                        </li>
+                      ))}
                     </ul>
                   </div>
                   <div className="p-6">
@@ -241,8 +247,12 @@ function Landing() {
                       </div>
                     </div>
                     <div className="mt-4 flex items-center gap-2">
-                      <Badge variant="secondary" className="rounded-full text-[10px]">GPT-4o</Badge>
-                      <Badge variant="secondary" className="rounded-full text-[10px]">Marketing voice</Badge>
+                      <Badge variant="secondary" className="rounded-full text-[10px]">
+                        Demo model
+                      </Badge>
+                      <Badge variant="secondary" className="rounded-full text-[10px]">
+                        Marketing voice
+                      </Badge>
                       <div className="ml-auto text-[11px] text-muted-foreground">
                         2.3s · 412 tokens
                       </div>
@@ -260,7 +270,10 @@ function Landing() {
             </div>
             <div className="mt-5 grid grid-cols-2 items-center gap-x-10 gap-y-4 opacity-70 sm:grid-cols-3 md:grid-cols-6">
               {["Northwind", "Plane", "Orbit", "Arcadia", "Helix", "Modulo"].map((b) => (
-                <div key={b} className="text-center text-sm font-semibold tracking-tight text-muted-foreground">
+                <div
+                  key={b}
+                  className="text-center text-sm font-semibold tracking-tight text-muted-foreground"
+                >
                   {b}
                 </div>
               ))}
@@ -273,7 +286,9 @@ function Landing() {
       <section className="border-t border-border/60 bg-muted/20 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge variant="outline" className="rounded-full">AI tools</Badge>
+            <Badge variant="outline" className="rounded-full">
+              AI tools
+            </Badge>
             <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
               One workspace. Every AI tool you need.
             </h2>
@@ -307,7 +322,9 @@ function Landing() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-center gap-14 md:grid-cols-2">
             <div>
-              <Badge variant="outline" className="rounded-full">Productivity</Badge>
+              <Badge variant="outline" className="rounded-full">
+                Productivity
+              </Badge>
               <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
                 Built for the way modern teams ship.
               </h2>
@@ -362,7 +379,9 @@ function Landing() {
       <section className="border-t border-border/60 bg-muted/20 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge variant="outline" className="rounded-full">Loved by teams</Badge>
+            <Badge variant="outline" className="rounded-full">
+              Loved by teams
+            </Badge>
             <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
               Teams that care about craft choose dewa.
             </h2>
@@ -400,7 +419,9 @@ function Landing() {
       <section id="pricing" className="border-t border-border/60 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge variant="outline" className="rounded-full">Pricing</Badge>
+            <Badge variant="outline" className="rounded-full">
+              Pricing
+            </Badge>
             <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
               Simple plans that scale with you.
             </h2>
@@ -451,7 +472,9 @@ function Landing() {
       <section className="border-t border-border/60 bg-muted/20 py-24">
         <div className="mx-auto grid max-w-5xl gap-12 px-6 md:grid-cols-[1fr_2fr]">
           <div>
-            <Badge variant="outline" className="rounded-full">FAQ</Badge>
+            <Badge variant="outline" className="rounded-full">
+              FAQ
+            </Badge>
             <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight md:text-4xl">
               Frequently asked.
             </h2>

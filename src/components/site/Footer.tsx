@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Sparkles, Github, Twitter, Linkedin } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const cols = [
   {
@@ -23,8 +23,8 @@ const cols = [
   {
     title: "Resources",
     links: [
-      { to: "/settings", label: "Settings" },
-      { to: "/billing", label: "Billing" },
+      { to: "/templates", label: "Prompt library" },
+      { to: "/changelog", label: "What's new" },
       { to: "/contact", label: "Support" },
       { to: "/blog", label: "Guides" },
     ],
@@ -41,23 +41,12 @@ export function Footer() {
               <div className="grid h-8 w-8 place-items-center rounded-lg bg-foreground text-background">
                 <Sparkles className="h-4 w-4" />
               </div>
-              <span className="text-[15px] font-semibold tracking-tight">Dewa ai</span>
+              <span className="text-[15px] font-semibold tracking-tight">Dewa AI</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               The modern AI workspace for content, code, automation, and team productivity — built
               for the next decade of work.
             </p>
-            <div className="mt-6 flex gap-2 text-muted-foreground">
-              <a className="rounded-md p-2 hover:bg-muted hover:text-foreground" href="#">
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a className="rounded-md p-2 hover:bg-muted hover:text-foreground" href="#">
-                <Github className="h-4 w-4" />
-              </a>
-              <a className="rounded-md p-2 hover:bg-muted hover:text-foreground" href="#">
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </div>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {cols.map((c) => (
@@ -79,12 +68,13 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <div>© {new Date().getFullYear()} Dewa ai, Inc. All rights reserved.</div>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-foreground">Privacy</a>
-            <a href="#" className="hover:text-foreground">Terms</a>
-            <a href="#" className="hover:text-foreground">Security</a>
-          </div>
+          <div>© {new Date().getFullYear()} Dewa AI, Inc. All rights reserved.</div>
+          <Link
+            to="/contact"
+            className="rounded-sm hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Contact
+          </Link>
         </div>
       </div>
     </footer>

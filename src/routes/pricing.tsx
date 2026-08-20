@@ -23,7 +23,7 @@ const plans = [
     desc: "For professionals shipping daily.",
     features: [
       "Unlimited AI credits",
-      "Advanced models (GPT-4o, Claude 3.5)",
+      "Advanced model workflows (demo)",
       "Prompt templates & history",
       "Priority support",
       "Team workspace (up to 5)",
@@ -55,9 +55,11 @@ function Pricing() {
   return (
     <SiteLayout>
       <section className="border-b border-border/60 py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <Badge variant="outline" className="rounded-full">Pricing</Badge>
-          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight md:text-6xl">
+        <div className="mx-auto max-w-3xl px-5 text-center sm:px-6">
+          <Badge variant="outline" className="rounded-full">
+            Pricing
+          </Badge>
+          <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
             Simple, transparent pricing.
           </h1>
           <p className="mt-4 text-balance text-muted-foreground">
@@ -65,7 +67,7 @@ function Pricing() {
           </p>
         </div>
       </section>
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-3">
           {plans.map((p) => (
             <div
@@ -82,7 +84,12 @@ function Pricing() {
                 </div>
               )}
               <div className="text-sm font-medium opacity-80">{p.name}</div>
-              <div className="mt-3 text-4xl font-semibold tracking-tight">{p.price}<span className="text-sm font-normal opacity-70">{p.price !== "Custom" && " / mo"}</span></div>
+              <div className="mt-3 text-4xl font-semibold tracking-tight">
+                {p.price}
+                <span className="text-sm font-normal opacity-70">
+                  {p.price !== "Custom" && " / mo"}
+                </span>
+              </div>
               <div className="mt-2 text-sm opacity-70">{p.desc}</div>
               <ul className="mt-6 space-y-3 text-sm">
                 {p.features.map((f) => (
@@ -91,8 +98,14 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button asChild variant={p.highlight ? "secondary" : "default"} className="mt-7 rounded-full">
-                <Link to="/billing">{p.cta} <ArrowRight className="h-4 w-4" /></Link>
+              <Button
+                asChild
+                variant={p.highlight ? "secondary" : "default"}
+                className="mt-7 rounded-full"
+              >
+                <Link to="/billing">
+                  {p.cta} <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
             </div>
           ))}
@@ -117,9 +130,15 @@ function Pricing() {
                     {row.map((cell, i) => (
                       <td key={i} className="px-5 py-3.5">
                         {typeof cell === "boolean" ? (
-                          cell ? <Check className="h-4 w-4 text-foreground" /> : <span className="text-muted-foreground">—</span>
+                          cell ? (
+                            <Check className="h-4 w-4 text-foreground" />
+                          ) : (
+                            <span className="text-muted-foreground">—</span>
+                          )
                         ) : (
-                          <span className={i === 0 ? "font-medium" : "text-muted-foreground"}>{cell}</span>
+                          <span className={i === 0 ? "font-medium" : "text-muted-foreground"}>
+                            {cell}
+                          </span>
                         )}
                       </td>
                     ))}

@@ -55,18 +55,18 @@ const ENTRIES = [
 function Changelog() {
   return (
     <SiteLayout>
-      <section className="border-b border-border/60 py-16">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <Badge variant="outline" className="rounded-full">Changelog</Badge>
-          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight">
+      <section className="border-b border-border/60 py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl px-5 text-center sm:px-6">
+          <Badge variant="outline" className="rounded-full">
+            Changelog
+          </Badge>
+          <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
             What's new in dewa.
           </h1>
-          <p className="mt-4 text-muted-foreground">
-            We ship every week. Here's the latest.
-          </p>
+          <p className="mt-4 text-muted-foreground">We ship every week. Here's the latest.</p>
         </div>
       </section>
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-6">
           <div className="relative">
             <div className="absolute left-3 top-2 bottom-2 w-px bg-border" />
@@ -78,7 +78,9 @@ function Changelog() {
                   </div>
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                     <span className="font-semibold text-foreground">v{e.v}</span>
-                    <Badge variant="secondary" className="rounded-full text-[10px]">{e.tag}</Badge>
+                    <Badge variant="secondary" className="rounded-full text-[10px]">
+                      {e.tag}
+                    </Badge>
                     <span>·</span>
                     <span>{e.date}</span>
                   </div>

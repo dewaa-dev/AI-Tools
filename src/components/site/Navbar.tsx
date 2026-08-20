@@ -2,13 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Sparkles, Menu } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-  SheetHeader,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -29,7 +23,7 @@ export function Navbar() {
           <div className="grid h-8 w-8 place-items-center rounded-lg bg-foreground text-background">
             <Sparkles className="h-4 w-4" />
           </div>
-          <span className="text-[15px] font-semibold tracking-tight">Dewa ai</span>
+          <span className="text-[15px] font-semibold tracking-tight">Dewa AI</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((n) => (
@@ -45,7 +39,7 @@ export function Navbar() {
         </nav>
         <div className="hidden items-center gap-2 md:flex">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/contact">Sign in</Link>
+            <Link to="/contact">Contact</Link>
           </Button>
           <Button size="sm" asChild className="rounded-full">
             <Link to="/workspace">Try AI Tools</Link>
@@ -53,7 +47,7 @@ export function Navbar() {
         </div>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label="Open site navigation">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -67,7 +61,7 @@ export function Navbar() {
                   key={n.to}
                   to={n.to}
                   onClick={() => setOpen(false)}
-                  className="rounded-md px-3 py-2 text-sm hover:bg-muted"
+                  className="min-h-11 rounded-md px-3 py-3 text-sm hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {n.label}
                 </Link>
